@@ -4,10 +4,10 @@
     "description": "Evtjs command line wrapper",
     "main": "index.js",
     "scripts": {
+        "dcli": "babel-node src/index.js",
         "postpublish": "babel src -d dist",
         "lint": "eslint .",
         "flow": "flow .",
-        "flow-typed": " flow-typed install",
         "watch": "babel --watch src -d dist"
     },
     "keywords": [
@@ -20,6 +20,7 @@
         "chalk": "^2.3.0",
         "evtjs": "^5.0.1",
         "inquirer": "^5.1.0",
+        "lodash": "^4.17.11",
         "log-symbols": "^2.2.0",
         "minimist": "^1.2.0",
         "moment": "^2.20.1",
@@ -27,6 +28,7 @@
         "node-fs-extra": "^0.8.2",
         "numeral": "^2.0.6",
         "ora": "^2.0.0",
+        "prettyjson": "^1.2.1",
         "ramda": "^0.26.1",
         "strip-ansi": "^4.0.0"
     },

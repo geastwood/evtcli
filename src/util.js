@@ -1,6 +1,7 @@
 /* @flow */
 
 import chalk from 'chalk'
+import prettyjson from 'prettyjson'
 import pkg from '../package.json'
 
 export const err = (msg: string) => {
@@ -32,3 +33,5 @@ export const assertNotNull = (v: any, msg: string = 'Not null or undefined') => 
         process.exit(1)
     }
 }
+
+export const render = (data: JSON) => console.log(prettyjson.render(data))

@@ -5,7 +5,7 @@ import * as apiCaller from '../apiCaller'
 const Info: TCommandRunable = {
     async run() {
         try {
-            const rst = await apiCaller.get().getInfo()
+            const rst = await apiCaller.get().getHeadBlockHeaderState()
             render(rst)
         } catch (e) {
             err(`Error occurred, ${e}`)
@@ -13,7 +13,7 @@ const Info: TCommandRunable = {
         }
     },
     help() {
-        info('This command prints chain info.')
+        info('This command get the head block header.')
     },
 }
 
