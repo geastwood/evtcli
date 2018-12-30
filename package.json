@@ -1,0 +1,56 @@
+{
+    "name": "evtcli",
+    "version": "0.0.1",
+    "description": "Evtjs command line wrapper",
+    "main": "index.js",
+    "scripts": {
+        "postpublish": "babel src -d dist",
+        "lint": "eslint .",
+        "flow": "flow .",
+        "flow-typed": " flow-typed install",
+        "watch": "babel --watch src -d dist"
+    },
+    "keywords": [
+        "evtjs",
+        "cli"
+    ],
+    "author": "Fei Liu <liu.fewood@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "chalk": "^2.3.0",
+        "evtjs": "^5.0.1",
+        "inquirer": "^5.1.0",
+        "log-symbols": "^2.2.0",
+        "minimist": "^1.2.0",
+        "moment": "^2.20.1",
+        "node-fetch": "^2.0.0",
+        "node-fs-extra": "^0.8.2",
+        "numeral": "^2.0.6",
+        "ora": "^2.0.0",
+        "ramda": "^0.26.1",
+        "strip-ansi": "^4.0.0"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.0",
+        "babel-eslint": "^8.2.2",
+        "babel-plugin-syntax-dynamic-import": "^6.18.0",
+        "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+        "babel-plugin-transform-flow-strip-types": "^6.22.0",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-stage-3": "^6.24.1",
+        "eslint": "^4.18.0",
+        "eslint-config-standard": "^10.2.1",
+        "eslint-plugin-flowtype": "^2.46.1",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-node": "^5.2.1",
+        "eslint-plugin-prettier": "^2.6.0",
+        "eslint-plugin-promise": "^3.6.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "flow-bin": "^0.89.0",
+        "flow-typed": "^2.5.1",
+        "jasmine": "^3.3.1",
+        "prettier": "^1.15.3"
+    }
+}
