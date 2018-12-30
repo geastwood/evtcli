@@ -1,13 +1,17 @@
 /* @flow */
 
 import info from './info'
-import help from './help'
 import headBlockHeaderState from './headBlockHeaderState'
+import domain from './domain'
 
-const commands = {
+type Command = {
+    [key: TCommand]: TCommandRunable,
+}
+
+const commands: Command = {
     getInfo: info,
     getHeadBlockHeaderState: headBlockHeaderState,
-    help,
+    domain,
 }
 
 export default commands

@@ -34,4 +34,10 @@ export const assertNotNull = (v: any, msg: string = 'Not null or undefined') => 
     }
 }
 
-export const render = (data: JSON) => console.log(prettyjson.render(data))
+export const render = (data: JSON, raw: boolean = false) => {
+    if (raw) {
+        console.log(JSON.stringify(data, null, 4))
+        return
+    }
+    console.log(prettyjson.render(data))
+}
