@@ -1,16 +1,21 @@
 /* @flow */
-import { info, err, render } from '../util'
+import { withLoading, info, render, err } from '../util'
 import * as apiCaller from '../apiCaller'
 
 const Info: TCommandRunable = {
-    async run() {
-        try {
-            const rst = await apiCaller.get().getInfo()
-            render(rst)
-        } catch (e) {
-            err(`Error occurred, ${e}`)
-            process.exit(1)
-        }
+    async run({ raw = false }) {
+        await withLoading(
+            'loading chain info',
+            () => apiCaller.get().getInfo(),
+            (e, rst) => {
+                if (e) {
+                    err(`Error occurred.`, e)
+                    process.exit(1)
+                }
+
+                render(rst, raw)
+            },
+        )
     },
     help() {
         info('This command prints chain info.')
