@@ -25,10 +25,9 @@ export const info = (msg: string, ...rest: string[]) => {
     console.log(chalk.blue(`[${pkg.name.toUpperCase()}/INFO]:`), msg, ...rest)
 }
 
-export const assertString = (v: any, msg: string = 'valid string required') => {
-    if (!v || typeof v !== 'string') {
-        err(msg)
-        process.exit(1)
+export const assertString = (v: mixed, msg: string = 'valid string required') => {
+    if (v === null || v === undefined || typeof v !== 'string') {
+        throw new Error(msg)
     }
 }
 
@@ -76,4 +75,17 @@ export const withLoading = async (msg: string, fn: Function, cb: (err: null | Er
     }
 
     cb(error, rst)
+}
+
+export const handleError = (error: ?Error) => {
+    if (error) {
+        err('', error)
+        process.exit(1)
+    }
+}
+
+export const resHandler = (raw: boolean) => (e: null | Error, data: any) => {
+    handleError(e)
+    render(data, raw)
+    process.exit(0)
 }

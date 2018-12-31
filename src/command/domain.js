@@ -1,8 +1,9 @@
 /* @flow */
 import evt from 'evtjs'
-import { success, err, render, assertString } from '../util'
+import { resHandler, withLoading, assertString } from '../util'
 import * as apiCaller from '../apiCaller'
 
+// eslint-disable-next-line
 const createDomain = async (api: any, domain: string, key: string) =>
     api.pushTransaction(
         { maxCharge: 10000, payer: key },
@@ -46,45 +47,46 @@ type CommandArgs = {
     create?: boolean,
     list?: boolean,
     created?: boolean,
-    domain?: ?string,
-    publicKey?: ?string,
-    privateKey?: ?string,
+    domain?: string,
+    publicKey?: string,
+    privateKey?: string,
     raw?: boolean,
 }
 
 const Domain: TCommandRunable = {
     async run({ domain, publicKey, privateKey, create, created, list, raw = false }: CommandArgs) {
-        try {
-            if (create) {
-                assertString(domain)
-                assertString(publicKey)
-                assertString(privateKey)
+        if (create) {
+            assertString(domain)
+            assertString(publicKey)
+            assertString(privateKey)
 
+            await withLoading(
                 // $FlowFixMe
-                const rst = await createDomain(apiCaller.get('testnet', privateKey), domain, publicKey)
-                render(rst, raw)
-                process.exit(0)
-            }
+                `Creating domain "${domain}"`,
+                // $FlowFixMe
+                () => createDomain(apiCaller.get('testnet', privateKey), domain, publicKey),
+                resHandler(raw),
+            )
+        }
 
-            if (list && domain) {
-                assertString(domain)
+        if (list && domain) {
+            assertString(domain)
 
-                const rst = await apiCaller.get().getDomainDetail(domain)
-                render(rst, raw)
-                process.exit(0)
-            }
+            await withLoading(
+                `Fetch detail of domain "${domain}"`,
+                () => apiCaller.get().getDomainDetail(domain),
+                resHandler(raw),
+            )
+        }
 
-            if (list && created) {
-                assertString(publicKey)
-                const rst = await apiCaller.get().getCreatedDomains([publicKey])
-                render(rst, raw)
-                process.exit(0)
-            }
+        if (list && created) {
+            assertString(publicKey)
 
-            throw new Error('domain --list is not yet supported.')
-        } catch (e) {
-            err(`Error occurred, ${e}`)
-            process.exit(1)
+            await withLoading(
+                `Fetching created domains`,
+                () => apiCaller.get().getCreatedDomains(publicKey),
+                resHandler(raw),
+            )
         }
     },
     help() {
