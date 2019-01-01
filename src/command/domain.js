@@ -91,7 +91,7 @@ const Domain: TCommandRunable = {
     },
     help() {
         console.log(`
-This command creates domain.
+Domain specific commands
     Examples: 
 
     * Create a domain

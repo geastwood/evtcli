@@ -10,7 +10,7 @@ const args = minimist(process.argv.slice(2))
 // $FlowFixMe
 const command: TCommand = R.head(args._)
 // $FlowFixMe
-const commandWhiteList: TCommandSupported = ['getInfo', 'getHeadBlockHeaderState', 'domain']
+const commandWhiteList: TCommandSupported = ['getInfo', 'getHeadBlockHeaderState', 'domain', 'nft']
 
 // Checking top level commands
 if (!commandWhiteList.includes(command)) {

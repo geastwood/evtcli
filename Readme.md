@@ -44,6 +44,10 @@ This is only used for testing purposes.
 
 ## Fixture data
 
-privateKey: `5JswhuLDEq7BENcNsu41Eg7dZCiv4TG8WffTNvbexbC1tyCN9EU`
+private key: `5JswhuLDEq7BENcNsu41Eg7dZCiv4TG8WffTNvbexbC1tyCN9EU`
 
-publicKey: `EVT8aNw4NTvjBL1XR6hgy4zcA9jzh1JLjMuAw85mSbW68vYzw2f9H`
+public key: `EVT8aNw4NTvjBL1XR6hgy4zcA9jzh1JLjMuAw85mSbW68vYzw2f9H`
+
+private key 1: `5JuCCq8aw8p6MNXzCwar1SiNwkvf8quffwFVx1WxHrSwMe5RdKQ`
+
+public key 1: `EVT6VNFZ4KhWgTKxKJKekvyb5Z3sqvqmxViMehPRPXaqyKavbCR7U`

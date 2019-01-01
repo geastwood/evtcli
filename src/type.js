@@ -1,7 +1,7 @@
 /* @flow */
 /* eslint-disable */
 
-declare type TCommand = 'getInfo' | 'getHeadBlockHeaderState' | 'domain' | 'type'
+declare type TCommand = 'getInfo' | 'getHeadBlockHeaderState' | 'domain' | 'type' | 'nft'
 
 declare type TCommandRunable = {|
     run: (args: any) => mixed,
