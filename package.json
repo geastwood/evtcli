@@ -22,7 +22,7 @@
         "inquirer": "^5.1.0",
         "lodash": "^4.17.11",
         "log-symbols": "^2.2.0",
-        "minimist": "^1.2.0",
+        "minimist": "^1.2.2",
         "moment": "^2.20.1",
         "node-fetch": "^2.0.0",
         "node-fs-extra": "^0.8.2",
